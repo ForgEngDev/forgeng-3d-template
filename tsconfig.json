@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "noEmit": true,
+    "paths": {
+      "forgeng": ["./src/vendor/forgeng/index.d.ts"],
+      "@forgeng/ui-dom": ["./src/vendor/forgeng/ui-dom.d.ts"]
+    }
+  },
+  "include": ["src"]
+}
