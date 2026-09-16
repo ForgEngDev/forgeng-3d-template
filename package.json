@@ -1,8 +1,30 @@
 {
   "name": "forgeng-3d-template",
   "version": "1.0.0",
+  "description": "TypeScript/WebGPU 3D game starter template for ForgEng (ForgeNG 3) — Vite + browser delivery",
   "type": "module",
   "license": "SEE LICENSE IN LICENSE",
+  "homepage": "https://github.com/ForgEngDev/forgeng-3d-template",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ForgEngDev/forgeng-3d-template.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ForgEngDev/forgeng-3d-template/issues"
+  },
+  "keywords": [
+    "forgeng",
+    "forgeng-3",
+    "typescript",
+    "webgpu",
+    "vite",
+    "3d",
+    "game-engine",
+    "game-template",
+    "browser-game",
+    "wgsl",
+    "ecs"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
