@@ -60,4 +60,9 @@ Advanced metrics: toggle in the side panel, or open with `?advanced=1`.
 
 ## License
 
-UNLICENSED / private template — adjust as needed for your org.
+See [LICENSE](./LICENSE).
+
+- **Template / game code:** free to use and improve for client-side games.
+- **ForgEng engine** (vendored under `src/vendor/forgeng/`): installation on
+  other computers as an engine/SDK and commercial use are strictly forbidden.
+

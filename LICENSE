@@ -1,0 +1,94 @@
+ForgEng Template License
+Copyright (c) ForgEngDev
+
+================================================================================
+SUMMARY
+================================================================================
+
+This repository is a starter template that may include a vendored copy of the
+ForgEng engine under src/vendor/forgeng/ (or equivalent paths).
+
+- Template / game code: free to use and improve for client-side games.
+- ForgEng engine: not licensed for installation on other computers, and not
+  licensed for commercial use.
+
+The full terms below control if anything in this summary conflicts.
+
+================================================================================
+1. DEFINITIONS
+================================================================================
+
+"Template Code" means the application, scene, UI, build, and documentation
+files in this repository that are not the Engine.
+
+"Engine" means ForgEng itself and any vendored engine runtime, shaders,
+contracts, DomUiShell, presets, or related binaries/sources shipped under
+vendor paths in this repository (for example src/vendor/forgeng/).
+
+"Client-Side Game" means an interactive game or demo that runs in an end-user
+client environment (for example a web browser), including local development
+and non-commercial playtesting of that game.
+
+"Commercial Use" means any use intended for or resulting in commercial
+advantage or monetary compensation, including selling, licensing, SaaS,
+paid hosting of the Engine, paid redistribution, or embedding the Engine in
+a paid product or service — except where Section 2 expressly allows you to
+ship a Client-Side Game that merely embeds the Engine as a dependency of
+that game under the limits of this license.
+
+================================================================================
+2. TEMPLATE CODE — PERMITTED USE
+================================================================================
+
+Subject to Section 3 and Section 4, you may freely:
+
+  a) use, copy, modify, and improve the Template Code;
+  b) build and further develop Client-Side Games based on the Template Code;
+  c) distribute your Client-Side Games that include Template Code changes.
+
+================================================================================
+3. ENGINE — STRICT RESTRICTIONS
+================================================================================
+
+The Engine is proprietary to ForgEngDev unless a separate written license
+from ForgEngDev says otherwise.
+
+You MUST NOT:
+
+  a) install, copy, deploy, host, or redistribute the Engine onto or for other
+     computers, servers, devices, or users as a standalone engine, SDK,
+     toolkit, or development environment;
+  b) use the Engine for Commercial Use;
+  c) extract the Engine from this template to create another engine
+     distribution, mirror, fork-as-engine, or competing runtime package;
+  d) remove, obscure, or alter Engine copyright, attribution, or license
+     notices.
+
+Limited exception for game shipping:
+You may embed the Engine only as needed for your own Client-Side Game to run
+for end users, provided that embedding is not Commercial Use of the Engine
+and does not grant those end users rights to use the Engine as a development
+tool or to reinstall/redistribute the Engine separately.
+
+If you need commercial rights or multi-machine Engine installation rights,
+contact ForgEngDev for a separate license.
+
+================================================================================
+4. NO WARRANTY
+================================================================================
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING
+FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+IN THE SOFTWARE.
+
+================================================================================
+5. TERMINATION
+================================================================================
+
+Any breach of Section 3 automatically terminates the rights granted by this
+license. Upon termination you must stop using the Engine and destroy copies
+obtained under this license, except Template Code you independently authored.
