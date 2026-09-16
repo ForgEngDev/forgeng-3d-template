@@ -1,5 +1,13 @@
 # ForgEng 3D Template
 
+<p align="center">
+  <img src="media/forgeng-ocean-demo-poster.webp" alt="ForgeNG Ocean Demo poster from forgeng.dev" width="100%" />
+</p>
+
+<p align="center">
+  <em>Homepage Ocean Demo poster — source: <a href="https://forgeng.dev/en">forgeng.dev</a></em>
+</p>
+
 **TypeScript starter template for browser games** built with **[ForgEng](https://forgeng.dev)** — a **WebGPU-first**, modular game engine that runs directly in modern browsers (no native runtime install).
 
 This repository is the **3D** starter sibling of [`forgeng-2d-template`](https://github.com/ForgEngDev/forgeng-2d-template). Use it to bootstrap client-side 3D scenes with Vite + TypeScript, then grow into the full ForgeNG 3.0 stack documented at [forgeng.dev](https://forgeng.dev).
