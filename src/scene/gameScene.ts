@@ -16,7 +16,6 @@ export class GameScene extends Scene {
   private readonly box = new Box();
   private readonly controller = new Controller();
   private readonly hud = new Hud();
-  private time = 0;
 
   constructor(key = "main") {
     super(key);
@@ -62,28 +61,19 @@ export class GameScene extends Scene {
     }
 
     this.controller.setup({
-      onAction: (source) => {
+      onJump: (source) => {
+        if (!this.box.jump()) return;
         const label =
           source === "space"
-            ? "Space — action"
+            ? "Space — jump"
             : source === "touch"
-              ? "Touch — action"
-              : "Left click — action";
+              ? "Touch — jump"
+              : "Left click — jump";
         this.hud.notify(label);
       },
-      onInteract: () => {
+      onReset: () => {
         this.box.resetPosition();
         this.hud.notify("E — cube reset to center");
-      },
-      onToggleRotate: () => {
-        const on = this.box.toggleRotation();
-        this.hud.notify(on ? "Q — rotation resumed" : "Q — rotation paused");
-      },
-      onMouseRight: () => {
-        this.hud.notify("Right click — secondary action");
-      },
-      onMouseMiddle: () => {
-        this.hud.notify("Middle click — tertiary action");
       },
       onMove: (key, label) => {
         this.hud.notify(`${key} — move ${label}`);
@@ -93,11 +83,12 @@ export class GameScene extends Scene {
 
   public override update(dt: number): void {
     super.update(dt);
-    this.time += dt;
 
     const move = this.controller.getMoveDirection();
     this.box.move(move.x, move.z, dt);
-    this.box.update(this.time);
+    if (this.box.update(dt)) {
+      this.hud.notify("Cube fell — reset to center");
+    }
     this.hud.update(dt);
   }
 

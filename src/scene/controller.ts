@@ -1,25 +1,19 @@
 /** Single source of truth for active controls, HUD display, and input wiring. */
 export const ACTIVE_CONTROLS = [
-  { id: "wasd", label: "Keyboard · WASD", help: "Move the cube across the platform" },
+  { id: "wasd", label: "Keyboard · WASD", help: "Move the cube — you can walk off the edge" },
   { id: "arrows", label: "Keyboard · Arrow keys", help: "Same movement as WASD" },
-  { id: "space", label: "Keyboard · Space", help: "Action + notification" },
-  { id: "e", label: "Keyboard · E", help: "Reset the cube position" },
-  { id: "q", label: "Keyboard · Q", help: "Pause / resume rotation" },
-  { id: "lmb", label: "Mouse · Left click", help: "Same action as Space" },
-  { id: "rmb", label: "Mouse · Right click", help: "Secondary action" },
-  { id: "mmb", label: "Mouse · Middle click", help: "Tertiary action" },
-  { id: "touch", label: "Touch · Tap", help: "Same action as Space" },
+  { id: "space", label: "Keyboard · Space", help: "Jump" },
+  { id: "e", label: "Keyboard · E", help: "Reset the cube to the center" },
+  { id: "lmb", label: "Mouse · Left click", help: "Jump" },
+  { id: "touch", label: "Touch · Tap", help: "Jump" },
 ] as const;
 
 export type ControlId = (typeof ACTIVE_CONTROLS)[number]["id"];
 
 /** Callbacks for input actions. */
 export interface ControllerHandlers {
-  onAction?: (source: "space" | "mouse-left" | "touch") => void;
-  onInteract?: () => void;
-  onToggleRotate?: () => void;
-  onMouseRight?: () => void;
-  onMouseMiddle?: () => void;
+  onJump?: (source: "space" | "mouse-left" | "touch") => void;
+  onReset?: () => void;
   /** WASD / arrow keys, fired once on the initial key press. */
   onMove?: (key: string, label: string) => void;
 }
@@ -32,7 +26,6 @@ export class Controller {
   private onKeyDown: ((event: KeyboardEvent) => void) | null = null;
   private onKeyUp: ((event: KeyboardEvent) => void) | null = null;
   private onPointer: ((event: PointerEvent) => void) | null = null;
-  private onContextMenu: ((event: Event) => void) | null = null;
   private canvas: HTMLElement | null = null;
   private handlers: ControllerHandlers = {};
 
@@ -58,19 +51,13 @@ export class Controller {
 
       if (code === "Space") {
         event.preventDefault();
-        this.handlers.onAction?.("space");
+        this.handlers.onJump?.("space");
         return;
       }
 
       if (code === "KeyE") {
         event.preventDefault();
-        this.handlers.onInteract?.();
-        return;
-      }
-
-      if (code === "KeyQ") {
-        event.preventDefault();
-        this.handlers.onToggleRotate?.();
+        this.handlers.onReset?.();
       }
     };
 
@@ -83,24 +70,10 @@ export class Controller {
 
     this.canvas = document.querySelector(canvasSelector);
     if (this.canvas) {
-      this.onContextMenu = (event) => event.preventDefault();
-      this.canvas.addEventListener("contextmenu", this.onContextMenu);
-
       this.onPointer = (event: PointerEvent) => {
-        // 0 = left, 1 = middle, 2 = right
         if (event.button === 0) {
           const source = event.pointerType === "touch" ? "touch" : "mouse-left";
-          this.handlers.onAction?.(source);
-          return;
-        }
-        if (event.button === 1) {
-          event.preventDefault();
-          this.handlers.onMouseMiddle?.();
-          return;
-        }
-        if (event.button === 2) {
-          event.preventDefault();
-          this.handlers.onMouseRight?.();
+          this.handlers.onJump?.(source);
         }
       };
       this.canvas.addEventListener("pointerdown", this.onPointer);
@@ -130,13 +103,9 @@ export class Controller {
     if (this.canvas && this.onPointer) {
       this.canvas.removeEventListener("pointerdown", this.onPointer);
     }
-    if (this.canvas && this.onContextMenu) {
-      this.canvas.removeEventListener("contextmenu", this.onContextMenu);
-    }
     this.onKeyDown = null;
     this.onKeyUp = null;
     this.onPointer = null;
-    this.onContextMenu = null;
     this.canvas = null;
     this.keys.clear();
     this.handlers = {};

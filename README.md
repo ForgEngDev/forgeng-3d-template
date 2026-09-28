@@ -33,8 +33,8 @@ A focused **3D starter** (not the full engine surface):
 
 - `ForgEng.create` engine entry (Phaser-style: config in `main.ts`, content in `src/scene/`)
 - perspective camera + ambient / directional lighting
-- orange cube on an 8×8 platform (WASD move, optional rotation)
-- Space / pointer actions, E reset, Q pause rotation
+- orange player cube on an 8×8 platform with movement, jumping, gravity, and fall reset
+- WASD / arrow movement, Space / pointer jump, E manual reset
 - DomUiShell side panel: **Controls** + optional **Metrics** (`?advanced=1`)
 - vendored ForgeNG **3.4.2 3D runtime** + DomUiShell under `src/vendor/forgeng/`
 
@@ -98,11 +98,11 @@ index.html
 
 | Input | Action |
 | --- | --- |
-| WASD / arrows | Move cube on the platform |
-| Space / left click / tap | Action toast |
+| WASD / arrows | Move the cube, including off the platform edge |
+| Space / left click / tap | Jump |
 | E | Reset cube to center |
-| Q | Pause / resume rotation |
-| Right / middle click | Secondary / tertiary toast |
+
+If the cube falls below the scene, it automatically resets to the center of the platform.
 
 Advanced metrics: side-panel toggle or `?advanced=1`.
 
