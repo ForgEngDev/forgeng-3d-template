@@ -189,6 +189,7 @@ async function C(o, e) {
     decorateRuntime: (t) => Object.freeze({
       game: t.game,
       acquire: t.acquire.bind(t),
+      prepare: t.prepare.bind(t),
       recover: t.recover.bind(t),
       preload: t.preload.bind(t),
       createScope: t.createScope.bind(t),
@@ -246,4 +247,4 @@ function O(o, e) {
 export {
   C as createOfficialFormatRuntime
 };
-
+//# sourceMappingURL=forge-format-runtime.esm.js.map

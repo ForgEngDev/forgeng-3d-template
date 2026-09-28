@@ -1318,4 +1318,4 @@ export {
   He as createBrowserMeshoptDecoder,
   Fe as createMeshoptGLTFExtension
 };
-
+//# sourceMappingURL=forge-meshopt-browser.esm.js.map

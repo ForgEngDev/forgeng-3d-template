@@ -10,13 +10,13 @@
 
 **TypeScript starter template for browser games** built with **[ForgEng](https://forgeng.dev)** — a **WebGPU-first**, modular game engine that runs directly in modern browsers (no native runtime install).
 
-This repository is the **3D** starter sibling of [`forgeng-2d-template`](https://github.com/ForgEngDev/forgeng-2d-template). Use it to bootstrap client-side 3D scenes with Vite + TypeScript, then grow into the full ForgeNG 3.0 stack documented at [forgeng.dev](https://forgeng.dev).
+This repository is the **3D** starter sibling of [`forgeng-2d-template`](https://github.com/ForgEngDev/forgeng-2d-template). Use it to bootstrap client-side 3D scenes with Vite + TypeScript, then grow into the full ForgeNG 3.4.2 stack documented at [forgeng.dev](https://forgeng.dev).
 
 > Keywords: `ForgEng`, `ForgeNG`, `TypeScript`, `WebGPU`, `3D game template`, `Vite`, `browser game engine`, `WGSL`, `ECS`, `transport`, `lighting`, `shadows`
 
 ## Why this template
 
-[ForgEng / ForgeNG 3.0](https://forgeng.dev/en/forgeng-3.0/getting-started/overview) is the current stable **browser-first TypeScript** engine release. Public docs describe it as combining:
+[ForgEng / ForgeNG 3.4.2](https://forgeng.dev/en/forgeng-3.0/getting-started/overview) is the engine version vendored by this template. Public docs describe it as combining:
 
 - the established **scene, ECS and 3D WebGPU runtime** under one lifecycle owner
 - a **production 2D runtime** (sprites, tilemaps, text, particles, cameras, animation, collision, lighting, masks, hybrid composition) when you need 2D or hybrid work
@@ -36,11 +36,11 @@ A focused **3D starter** (not the full engine surface):
 - orange cube on an 8×8 platform (WASD move, optional rotation)
 - Space / pointer actions, E reset, Q pause rotation
 - DomUiShell side panel: **Kontrole** + optional **Metrike** (`?advanced=1`)
-- vendored ForgeNG **3D runtime** + DomUiShell under `src/vendor/forgeng/`
+- vendored ForgeNG **3.4.2 3D runtime** + DomUiShell under `src/vendor/forgeng/`
 
 ## Engine capabilities you can grow into
 
-Documented on [forgeng.dev](https://forgeng.dev) / ForgeNG 3.0 docs (not all enabled in this starter by default):
+Documented on [forgeng.dev](https://forgeng.dev) / ForgeNG 3.x docs (not all enabled in this starter by default):
 
 | Area | Publicly documented direction |
 | --- | --- |
@@ -58,7 +58,7 @@ Documented on [forgeng.dev](https://forgeng.dev) / ForgeNG 3.0 docs (not all ena
 
 - Git (to clone this repository)
 - Node.js 18+
-- A browser/device with **WebGPU** support (ForgeNG 3.0 does not silently switch renderer)
+- A browser/device with **WebGPU** support (ForgeNG 3.4.2 does not silently switch renderer)
 
 ## Quick start
 
@@ -109,7 +109,7 @@ Advanced metrics: side-panel toggle or `?advanced=1`.
 ## Learn more
 
 - Website: [https://forgeng.dev](https://forgeng.dev)
-- Docs (3.0 overview): [https://forgeng.dev/en/forgeng-3.0/getting-started/overview](https://forgeng.dev/en/forgeng-3.0/getting-started/overview)
+- Docs (3.x overview): [https://forgeng.dev/en/forgeng-3.0/getting-started/overview](https://forgeng.dev/en/forgeng-3.0/getting-started/overview)
 - Transport (opt-in networking composition): [https://forgeng.dev/en/forgeng-3.0/advanced/transport-composition](https://forgeng.dev/en/forgeng-3.0/advanced/transport-composition)
 - Demos: [https://forgeng.dev/en](https://forgeng.dev/en) → Demos
 - 2D sibling template: [forgeng-2d-template](https://github.com/ForgEngDev/forgeng-2d-template)
