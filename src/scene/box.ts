@@ -5,7 +5,7 @@ type MeshTransform = {
   setPosition(x: number, y: number, z: number): void;
 };
 
-/** Narandžasta kocka — rotira se i pomera se WASD-om. */
+/** Orange cube that rotates and moves with WASD. */
 export class Box {
   private mesh: StandardMesh | null = null;
   private x = 0;
@@ -13,7 +13,7 @@ export class Box {
   private z = 0;
   private rotating = true;
 
-  /** Pola platforme (8×8) minus pola kocke, da ne padne sa ivice */
+  /** Half the 8×8 platform minus half the cube, keeping it away from the edge. */
   private readonly limit = 3.25;
   private readonly speed = 3.2;
 
@@ -32,14 +32,14 @@ export class Box {
     this.transform().setPosition(this.x, this.y, this.z);
   }
 
-  /** Vrati kocku u centar (npr. taster E). */
+  /** Reset the cube to the center, for example when E is pressed. */
   public resetPosition(): void {
     this.x = 0;
     this.z = 0;
     this.mesh && this.transform().setPosition(this.x, this.y, this.z);
   }
 
-  /** Q — pauza / nastavak rotacije. */
+  /** Q pauses or resumes rotation. */
   public toggleRotation(): boolean {
     this.rotating = !this.rotating;
     return this.rotating;

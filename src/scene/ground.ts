@@ -1,11 +1,11 @@
 import type { Scene, StandardMesh } from "forgeng";
 
-/** Podloga 8×8 ispod kocke. */
+/** 8×8 platform beneath the cube. */
 export class Ground {
   private mesh: StandardMesh | null = null;
 
   public async build(scene: Scene): Promise<void> {
-    // setScale(1,1,1) zadržava kvadrat — engine inače skalira plane po width/height
+    // setScale(1,1,1) keeps the plane square; the engine otherwise scales it by width/height.
     this.mesh = await scene.add
       .plane(8, 8)
       .setScale(1, 1, 1)

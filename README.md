@@ -35,7 +35,7 @@ A focused **3D starter** (not the full engine surface):
 - perspective camera + ambient / directional lighting
 - orange cube on an 8×8 platform (WASD move, optional rotation)
 - Space / pointer actions, E reset, Q pause rotation
-- DomUiShell side panel: **Kontrole** + optional **Metrike** (`?advanced=1`)
+- DomUiShell side panel: **Controls** + optional **Metrics** (`?advanced=1`)
 - vendored ForgeNG **3.4.2 3D runtime** + DomUiShell under `src/vendor/forgeng/`
 
 ## Engine capabilities you can grow into

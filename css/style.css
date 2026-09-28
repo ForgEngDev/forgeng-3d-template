@@ -18,7 +18,7 @@ body {
   height: 100vh;
 }
 
-/* Stabilan toast — van DomUiShell overlay-a (ne briše ga settings.refresh) */
+/* Stable toast outside the DomUiShell overlay (settings.refresh does not remove it). */
 .template-toast {
   position: fixed;
   right: 24px;

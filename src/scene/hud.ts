@@ -1,7 +1,7 @@
 import type { UiDisposable, UiShellLike } from "@forgeng/ui-dom";
 import { ACTIVE_CONTROLS } from "./controller";
 
-/** Izvor metrika iz engine-a / scene (prosledi iz GameScene). */
+/** Engine and scene metrics supplied by GameScene. */
 export interface MetricsSource {
   getRenderCounters(): {
     drawCalls?: number;
@@ -24,8 +24,8 @@ function readAdvancedFromUrl(): boolean {
 }
 
 /**
- * Engine GUI: početnici vide Kontrole + status;
- * napredne Metrike tek preko toggle-a ili ?advanced=1.
+ * Beginner-friendly engine GUI: Controls and status are always visible;
+ * advanced Metrics appear only after using the toggle or ?advanced=1.
  */
 export class Hud {
   private readonly disposers: UiDisposable[] = [];
@@ -49,17 +49,17 @@ export class Hud {
     this.hideDefaultEngineChrome(ui, sceneName);
     this.applyAdvancedMode(this.advanced);
 
-    // 1) Kontrole — lista iz ACTIVE_CONTROLS (isti izvor kao Controller)
+    // 1) Controls from ACTIVE_CONTROLS, the same source used by Controller.
     this.disposers.push(
       ui.settings.register({
         id: "template.controls",
-        title: "Kontrole",
+        title: "Controls",
         fields: [
           {
             id: "status",
             label: "Status",
             kind: "status",
-            read: () => `Spreman · ${this.fps} FPS`,
+            read: () => `Ready · ${this.fps} FPS`,
           },
           ...ACTIVE_CONTROLS.map((control) => ({
             id: `ctrl-${control.id}`,
@@ -69,7 +69,7 @@ export class Hud {
           })),
           {
             id: "advanced",
-            label: "Napredne metrike",
+            label: "Advanced metrics",
             kind: "boolean",
             read: () => this.advanced,
             write: (value: string | number | boolean | null) => {
@@ -82,8 +82,8 @@ export class Hud {
             kind: "status",
             read: () =>
               this.advanced
-                ? "Metrike su uključene (?advanced=1)"
-                : "Uključi gore ili otvori ?advanced=1",
+                ? "Metrics are enabled (?advanced=1)"
+                : "Enable above or open ?advanced=1",
           },
         ],
       }),
@@ -91,18 +91,18 @@ export class Hud {
     this.disposers.push(
       ui.contributions.register({
         id: "template.controls.panel",
-        title: "Kontrole",
+        title: "Controls",
         slot: "side-panel",
         order: 10,
         settingsSchemaId: "template.controls",
       }),
     );
 
-    // 2) Metrike — registrovane uvek, vidljive samo u advanced režimu
+    // 2) Metrics are always registered but visible only in advanced mode.
     this.disposers.push(
       ui.settings.register({
         id: "template.metrics",
-        title: "Metrike",
+        title: "Metrics",
         fields: [
           { id: "fps", label: "FPS", kind: "status", read: () => String(this.fps) },
           {
@@ -113,7 +113,7 @@ export class Hud {
           },
           {
             id: "time",
-            label: "Vreme scene",
+            label: "Scene time",
             kind: "status",
             read: () => `${this.timeSeconds.toFixed(1)} s`,
           },
@@ -125,7 +125,7 @@ export class Hud {
           },
           {
             id: "triangles",
-            label: "Trouglovi",
+            label: "Triangles",
             kind: "status",
             read: () => this.readCounter("triangles"),
           },
@@ -137,7 +137,7 @@ export class Hud {
           },
           {
             id: "quality",
-            label: "Quality profil",
+            label: "Quality profile",
             kind: "status",
             read: () => this.source?.getQualityProfile() ?? "—",
           },
@@ -152,7 +152,7 @@ export class Hud {
           },
           {
             id: "resolution",
-            label: "Rezolucija",
+            label: "Resolution",
             kind: "status",
             read: () => {
               const size = this.source?.getCanvasSize();
@@ -161,7 +161,7 @@ export class Hud {
           },
           {
             id: "gpu-mem",
-            label: "GPU memorija",
+            label: "GPU memory",
             kind: "status",
             read: () => {
               const mb = this.source?.getGpuMemoryMB?.();
@@ -176,7 +176,7 @@ export class Hud {
           },
           {
             id: "cpu",
-            label: "CPU jezgra",
+            label: "CPU cores",
             kind: "status",
             read: () => {
               const cores = this.source?.getSystemInfo().cpuCores;
@@ -185,7 +185,7 @@ export class Hud {
           },
           {
             id: "ram",
-            label: "RAM (uređaj)",
+            label: "RAM (device)",
             kind: "status",
             read: () => {
               const ram = this.source?.getSystemInfo().ramGB;
@@ -198,7 +198,7 @@ export class Hud {
     this.disposers.push(
       ui.contributions.register({
         id: "template.metrics.panel",
-        title: "Metrike",
+        title: "Metrics",
         slot: "side-panel",
         order: 20,
         settingsSchemaId: "template.metrics",
@@ -227,9 +227,9 @@ export class Hud {
   private toastEl: HTMLElement | null = null;
 
   /**
-   * Feedback poruka.
-   * Ne koristimo ui.notifications — DomUiShell pri settings.refresh() radi
-   * replaceChildren() na floating-overlay i obriše toast (~0.5s).
+   * Feedback message.
+   * We do not use ui.notifications because DomUiShell calls replaceChildren()
+   * on the floating overlay during settings.refresh(), removing the toast after ~0.5s.
    */
   public notify(message: string, durationMs = 6000): void {
     if (typeof document === "undefined") return;
@@ -240,7 +240,7 @@ export class Hud {
     }
 
     const toast = this.ensureToast();
-    toast.innerHTML = `<strong>Kontroler</strong><span>${escapeHtml(message)}</span>`;
+    toast.innerHTML = `<strong>Controls</strong><span>${escapeHtml(message)}</span>`;
     toast.hidden = false;
 
     this.notifyTimer = setTimeout(() => {
@@ -300,7 +300,7 @@ export class Hud {
       else url.searchParams.delete("advanced");
       window.history.replaceState({}, "", url);
     } catch {
-      // ignore (npr. file://)
+      // Ignore environments such as file://.
     }
   }
 
@@ -313,28 +313,28 @@ export class Hud {
       },
     });
 
-    // Ne zovi surfaces.hide() — DomUiShell tada radi structuredClone na chrome
-    // surface content-u (sa mountContent) i puca: "must contain cloneable data".
-    // Sakrivamo chrome / Exit / Audio / Renderer samo CSS-om.
+    // Do not call surfaces.hide(): DomUiShell then runs structuredClone on the
+    // chrome surface content (including mountContent) and throws "must contain cloneable data".
+    // Hide Chrome / Exit / Audio / Renderer with CSS only.
     if (typeof document === "undefined") return;
 
     this.styleEl = document.createElement("style");
     this.styleEl.id = "template-ui-focus";
     this.styleEl.textContent = `
-      /* Scene chrome (naslov "main" + Exit) */
+      /* Scene chrome (the "main" title and Exit button) */
       .forgeng-ui-surface[data-surface-id$=".chrome"],
       .forgeng-ui-surface[data-surface-id$=".menu"] {
         display: none !important;
       }
 
-      /* Ugrađene engine kartice */
+      /* Built-in engine cards */
       .forgeng-ui-card[data-contribution-id="forgeng.renderer.webgpu.debug"],
       .forgeng-ui-card[data-contribution-id="forgeng.audio.webaudio.panel"],
       .forgeng-ui-card[data-contribution-id="forgeng.assets.health.panel"] {
         display: none !important;
       }
 
-      /* Metrike samo u advanced režimu */
+      /* Show Metrics only in advanced mode */
       body[data-template-advanced="0"] .forgeng-ui-card[data-contribution-id="template.metrics.panel"] {
         display: none !important;
       }
