@@ -1750,4 +1750,4 @@ export {
   St as createKTX2AssetDecoderDescriptor,
   Mt as createKTX2GLTFExtension
 };
-
+//# sourceMappingURL=forge-ktx2-browser.esm.js.map

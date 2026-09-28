@@ -8,8 +8,8 @@ import { Hud } from "./hud";
 import type { UiShellLike } from "@forgeng/ui-dom";
 
 /**
- * Glavna scena igre.
- * Ovde sastavljaš šta scena sadrži (kamera, svetlo, objekti, input, GUI paneli).
+ * Main game scene.
+ * Compose the camera, lighting, objects, input, and GUI panels here.
  */
 export class GameScene extends Scene {
   private readonly ground = new Ground();
@@ -33,7 +33,7 @@ export class GameScene extends Scene {
     await this.ground.build(this);
     await this.box.build(this);
 
-    // Engine DomUiShell — Kontrole uvek; Metrike uz ?advanced=1 ili toggle
+    // Engine DomUiShell: Controls are always visible; Metrics use ?advanced=1 or the toggle.
     const ui = this.getEngine().uiShell as UiShellLike | null;
     if (ui) {
       const engine = this.getEngine();
@@ -65,28 +65,28 @@ export class GameScene extends Scene {
       onAction: (source) => {
         const label =
           source === "space"
-            ? "Space — akcija"
+            ? "Space — action"
             : source === "touch"
-              ? "Touch — akcija"
-              : "Levi klik — akcija";
+              ? "Touch — action"
+              : "Left click — action";
         this.hud.notify(label);
       },
       onInteract: () => {
         this.box.resetPosition();
-        this.hud.notify("E — kocka vraćena u centar");
+        this.hud.notify("E — cube reset to center");
       },
       onToggleRotate: () => {
         const on = this.box.toggleRotation();
-        this.hud.notify(on ? "Q — rotacija uključena" : "Q — rotacija pauzirana");
+        this.hud.notify(on ? "Q — rotation resumed" : "Q — rotation paused");
       },
       onMouseRight: () => {
-        this.hud.notify("Desni klik — sekundarna akcija");
+        this.hud.notify("Right click — secondary action");
       },
       onMouseMiddle: () => {
-        this.hud.notify("Srednji klik — tercijarna akcija");
+        this.hud.notify("Middle click — tertiary action");
       },
       onMove: (key, label) => {
-        this.hud.notify(`${key} — pomeranje (${label})`);
+        this.hud.notify(`${key} — move ${label}`);
       },
     });
   }

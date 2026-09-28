@@ -1362,4 +1362,4 @@ export {
   at as createBrowserDracoDecoder,
   ot as createDracoGLTFExtension
 };
-
+//# sourceMappingURL=forge-draco-browser.esm.js.map

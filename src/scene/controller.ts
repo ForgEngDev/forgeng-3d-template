@@ -1,31 +1,31 @@
-/** Jedan izvor istine: šta je aktivno u Controller-u (prikaz u HUD-u + wiring). */
+/** Single source of truth for active controls, HUD display, and input wiring. */
 export const ACTIVE_CONTROLS = [
-  { id: "wasd", label: "Tastatura · WASD", help: "Pomeranje kocke po platformi" },
-  { id: "arrows", label: "Tastatura · Strelice", help: "Isto kretanje kao WASD" },
-  { id: "space", label: "Tastatura · Space", help: "Akcija + notifikacija" },
-  { id: "e", label: "Tastatura · E", help: "Reset pozicije kocke" },
-  { id: "q", label: "Tastatura · Q", help: "Pauza / nastavak rotacije" },
-  { id: "lmb", label: "Miš · Levi klik", help: "Ista akcija kao Space" },
-  { id: "rmb", label: "Miš · Desni klik", help: "Sekundarna akcija" },
-  { id: "mmb", label: "Miš · Srednji klik", help: "Tercijarna akcija" },
-  { id: "touch", label: "Touch · Tap", help: "Ista akcija kao Space" },
+  { id: "wasd", label: "Keyboard · WASD", help: "Move the cube across the platform" },
+  { id: "arrows", label: "Keyboard · Arrow keys", help: "Same movement as WASD" },
+  { id: "space", label: "Keyboard · Space", help: "Action + notification" },
+  { id: "e", label: "Keyboard · E", help: "Reset the cube position" },
+  { id: "q", label: "Keyboard · Q", help: "Pause / resume rotation" },
+  { id: "lmb", label: "Mouse · Left click", help: "Same action as Space" },
+  { id: "rmb", label: "Mouse · Right click", help: "Secondary action" },
+  { id: "mmb", label: "Mouse · Middle click", help: "Tertiary action" },
+  { id: "touch", label: "Touch · Tap", help: "Same action as Space" },
 ] as const;
 
 export type ControlId = (typeof ACTIVE_CONTROLS)[number]["id"];
 
-/** Callback-ovi za ulazne akcije. */
+/** Callbacks for input actions. */
 export interface ControllerHandlers {
   onAction?: (source: "space" | "mouse-left" | "touch") => void;
   onInteract?: () => void;
   onToggleRotate?: () => void;
   onMouseRight?: () => void;
   onMouseMiddle?: () => void;
-  /** WASD / strelice — jednom pri prvom pritisku tastera */
+  /** WASD / arrow keys, fired once on the initial key press. */
   onMove?: (key: string, label: string) => void;
 }
 
 /**
- * Ulaz: samo tasteri iz ACTIVE_CONTROLS.
+ * Input is limited to keys listed in ACTIVE_CONTROLS.
  */
 export class Controller {
   private readonly keys = new Set<string>();
@@ -87,7 +87,7 @@ export class Controller {
       this.canvas.addEventListener("contextmenu", this.onContextMenu);
 
       this.onPointer = (event: PointerEvent) => {
-        // 0 = levi, 1 = srednji, 2 = desni
+        // 0 = left, 1 = middle, 2 = right
         if (event.button === 0) {
           const source = event.pointerType === "touch" ? "touch" : "mouse-left";
           this.handlers.onAction?.(source);
@@ -107,7 +107,7 @@ export class Controller {
     }
   }
 
-  /** Jedinični pravac kretanja iz WASD (XZ ravan). */
+  /** Normalized WASD movement direction on the XZ plane. */
   public getMoveDirection(): { x: number; z: number } {
     let x = 0;
     let z = 0;
@@ -144,12 +144,12 @@ export class Controller {
 }
 
 const MOVEMENT_LABELS: Record<string, { key: string; label: string }> = {
-  KeyW: { key: "W", label: "napred" },
-  KeyS: { key: "S", label: "nazad" },
-  KeyA: { key: "A", label: "levo" },
-  KeyD: { key: "D", label: "desno" },
-  ArrowUp: { key: "↑", label: "napred" },
-  ArrowDown: { key: "↓", label: "nazad" },
-  ArrowLeft: { key: "←", label: "levo" },
-  ArrowRight: { key: "→", label: "desno" },
+  KeyW: { key: "W", label: "forward" },
+  KeyS: { key: "S", label: "backward" },
+  KeyA: { key: "A", label: "left" },
+  KeyD: { key: "D", label: "right" },
+  ArrowUp: { key: "↑", label: "forward" },
+  ArrowDown: { key: "↓", label: "backward" },
+  ArrowLeft: { key: "←", label: "left" },
+  ArrowRight: { key: "→", label: "right" },
 };

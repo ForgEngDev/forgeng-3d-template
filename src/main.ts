@@ -3,9 +3,9 @@ import { DOM_UI_SHELL_PROVIDER_DESCRIPTOR } from "@forgeng/ui-dom";
 import { GameScene } from "./scene/gameScene";
 
 /**
- * Engine ulaz (kao Phaser Game config).
- * Ovde podešavaš canvas, veličinu, render profil, UI provider i spisak scena.
- * Sadržaj scene živi u src/scene/ — ne ovde.
+ * Engine entry point, similar to a Phaser Game config.
+ * Configure the canvas, size, render profile, UI provider, and scene list here.
+ * Scene content lives in src/scene/, not in this file.
  */
 ForgEng.create({
   canvas: {
@@ -13,10 +13,10 @@ ForgEng.create({
     layout: "viewport",
   },
 
-  // Opciono: fiksna rezolucija umesto viewport-a
+  // Optional: use a fixed resolution instead of the viewport.
   // size: { width: 1280, height: 720, autoResize: true },
 
-  // Ugrađeni DomUiShell (side-panel, notifikacije, settings…)
+  // Built-in DomUiShell with a side panel, notifications, and settings.
   providers: {
     ui: DOM_UI_SHELL_PROVIDER_DESCRIPTOR,
   },

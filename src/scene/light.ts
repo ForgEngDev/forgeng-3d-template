@@ -1,8 +1,8 @@
 import type { Scene } from "forgeng";
 
 /**
- * Ambijent (hladan) + directional „sunce“ (toplo).
- * Kosi ugao svetla daje volumen na kocki i jasne senke na tlu.
+ * Cool ambient light plus warm directional sunlight.
+ * The angled light gives the cube volume and creates clear ground shadows.
  */
 export function setupLight(scene: Scene): void {
   scene.getRenderApi().setAmbientLight(0.3, 0.35, 0.45, 0.8);
