@@ -10,7 +10,7 @@
 
 **TypeScript starter template for browser games** built with **[ForgEng](https://forgeng.dev)** — a **WebGPU-first**, modular game engine that runs directly in modern browsers (no native runtime install).
 
-This repository is the **3D** starter sibling of [`forgeng-2d-template`](https://github.com/ForgEngDev/forgeng-2d-template). Use it to bootstrap client-side 3D scenes with Vite + TypeScript, then grow into the full ForgeNG 3.4.2 stack documented at [forgeng.dev](https://forgeng.dev).
+This repository is the **3D** starter sibling of [`forgeng-2d-top-down-template`](https://github.com/ForgEngDev/forgeng-2d-top-down-template) and [`forgeng-2d-platformer-template`](https://github.com/ForgEngDev/forgeng-2d-platformer-template). Use it to bootstrap client-side 3D scenes with Vite + TypeScript, then grow into the full ForgeNG 3.4.2 stack documented at [forgeng.dev](https://forgeng.dev).
 
 > Keywords: `ForgEng`, `ForgeNG`, `TypeScript`, `WebGPU`, `3D game template`, `Vite`, `browser game engine`, `WGSL`, `ECS`, `transport`, `lighting`, `shadows`
 
@@ -112,7 +112,8 @@ Advanced metrics: side-panel toggle or `?advanced=1`.
 - Docs (3.x overview): [https://forgeng.dev/en/forgeng-3.0/getting-started/overview](https://forgeng.dev/en/forgeng-3.0/getting-started/overview)
 - Transport (opt-in networking composition): [https://forgeng.dev/en/forgeng-3.0/advanced/transport-composition](https://forgeng.dev/en/forgeng-3.0/advanced/transport-composition)
 - Demos: [https://forgeng.dev/en](https://forgeng.dev/en) → Demos
-- 2D sibling template: [forgeng-2d-template](https://github.com/ForgEngDev/forgeng-2d-template)
+- Top-down 2D sibling: [forgeng-2d-top-down-template](https://github.com/ForgEngDev/forgeng-2d-top-down-template)
+- Platformer 2D sibling: [forgeng-2d-platformer-template](https://github.com/ForgEngDev/forgeng-2d-platformer-template)
 
 ## License
 
