@@ -126,3 +126,8 @@ See [LICENSE](./LICENSE).
 - **ForgEng engine** (vendored under `src/vendor/forgeng/`): installation on other computers as an engine/SDK and commercial use of the engine are strictly forbidden.
 
 Engine ownership and commercial grants are also described on the public [ForgeNG License](https://forgeng.dev/en/license) page.
+
+
+## Public API and AI coding assistants
+
+See the [ForgeNG public API repository](https://github.com/ForgEngDev/forgeng-api) for versioned TypeScript signatures, an API entry map, and [instructions for AI assistants](https://github.com/ForgEngDev/forgeng-api/blob/main/AGENTS.md). Give your assistant that link together with this game project. This template's pinned runtime and vendored declarations take precedence over a newer API snapshot. Start with one change and run `npm run build`, then check the game in a WebGPU browser.
