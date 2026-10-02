@@ -21,6 +21,7 @@ logger.error = (message, options) => {
 };
 
 export default defineConfig({
+  base: "./",
   customLogger: logger,
   resolve: {
     alias: {

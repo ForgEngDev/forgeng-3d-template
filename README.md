@@ -1,5 +1,7 @@
 # ForgEng 3D Template
 
+**Live demo:** [play.forgeng.dev/forgeng-3d-template/current/](https://play.forgeng.dev/forgeng-3d-template/current/)
+
 <p align="center">
   <img src="media/forgeng-ocean-demo-poster.webp" alt="ForgeNG Ocean Demo poster from forgeng.dev" width="100%" />
 </p>
