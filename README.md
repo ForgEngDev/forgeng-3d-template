@@ -10,7 +10,7 @@
 
 **TypeScript starter template for browser games** built with **[ForgEng](https://forgeng.dev)** — a **WebGPU-first**, modular game engine that runs directly in modern browsers (no native runtime install).
 
-This repository is the **3D** starter sibling of [`forgeng-2d-top-down-template`](https://github.com/ForgEngDev/forgeng-2d-top-down-template) and [`forgeng-2d-platformer-template`](https://github.com/ForgEngDev/forgeng-2d-platformer-template). Use it to bootstrap client-side 3D scenes with Vite + TypeScript, then grow into the full ForgeNG 3.4.2 stack documented at [forgeng.dev](https://forgeng.dev).
+This repository is the **3D** starter sibling of [`forgeng-2d-top-down-template`](https://github.com/ForgEngDev/forgeng-2d-top-down-template), [`forgeng-2d-platformer-template`](https://github.com/ForgEngDev/forgeng-2d-platformer-template), and [`forgeng-2d-endless-flyer-template`](https://github.com/ForgEngDev/forgeng-2d-endless-flyer-template). Use it to bootstrap client-side 3D scenes with Vite + TypeScript, then grow into the full ForgeNG 3.4.2 stack documented at [forgeng.dev](https://forgeng.dev).
 
 > Keywords: `ForgEng`, `ForgeNG`, `TypeScript`, `WebGPU`, `3D game template`, `Vite`, `browser game engine`, `WGSL`, `ECS`, `transport`, `lighting`, `shadows`
 
@@ -114,6 +114,7 @@ Advanced metrics: side-panel toggle or `?advanced=1`.
 - Demos: [https://forgeng.dev/en](https://forgeng.dev/en) → Demos
 - Top-down 2D sibling: [forgeng-2d-top-down-template](https://github.com/ForgEngDev/forgeng-2d-top-down-template)
 - Platformer 2D sibling: [forgeng-2d-platformer-template](https://github.com/ForgEngDev/forgeng-2d-platformer-template)
+- Endless-flyer 2D sibling: [forgeng-2d-endless-flyer-template](https://github.com/ForgEngDev/forgeng-2d-endless-flyer-template)
 
 ## License
 
